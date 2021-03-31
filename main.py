@@ -1,9 +1,11 @@
 import discord as dc
 
 from AbstractCommand import AbstractCommand
+from SNSCommand import SNSCommand
+from SoineCommand import SoineCommand
 from SyowaCommand import SyowaCommand
 
-DISCORD_TOKEN = "ODI2NzI3MjI0NjA2NDU3ODY2.YGQrug.O0cuWSRCqWT1k8ZzJYBJAeImTjc"
+DISCORD_TOKEN = "ODI2NzI3MjI0NjA2NDU3ODY2.YGQrug.1cZiZdArhTVT9QS_CnkM4ikuHUA"
 
 PRE_FIX = "<w>"
 
@@ -27,7 +29,8 @@ def add_command(command):
 
 
 @client.event
-async def on_message(event):
+async def on_message(event: dc.Message):
+    print(type(event))
     message: str = str(event.content)
     debug(message + " : " + message[:len(PRE_FIX)])
     # message がコマンドか確認
@@ -50,5 +53,7 @@ async def on_message(event):
 
 # コマンド追加
 add_command(SyowaCommand("syowa"))
+add_command(SoineCommand("soine"))
+add_command(SNSCommand("sns"))
 
 client.run(DISCORD_TOKEN)

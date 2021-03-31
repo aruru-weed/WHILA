@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from discord import Client
+from discord import Client, Message
 
 
 class AbstractCommand:
@@ -12,5 +12,5 @@ class AbstractCommand:
         pass
 
     @abstractmethod
-    async def run(self, client: Client, event, args: list):
+    async def run(self, client: Client, event: Message, args: list):
         pass
